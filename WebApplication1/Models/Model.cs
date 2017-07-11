@@ -9,5 +9,12 @@ namespace WebApplication1.Models
     {
         public string Name { get; set; }
         public string Nickname { get; set; }
+
+
+        public void Initialise()
+        {
+            Name = "Initial Name";
+            Nickname = "Initial Nickname";
+        }
     }
 }
