@@ -1,17 +1,29 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WorkshopMVC.Models;
+using Ploeh.AutoFixture;
 
 namespace WorkshopMVC.Tests.Models
 {
     [TestClass]
     public class SimpleModelTests
     {
+        Fixture fixture;
+
+        [TestInitialize]
+        public void Initialise()
+        {
+            fixture = new Fixture();
+        }
+
         [TestMethod]
         public void GivenObjectCreated_WhenInitialised_ThanNameNicknameSetAsExpected()
         {
             // Arrange
-            var model = new SimpleModel();
+            //var model = new SimpleModel();
+            var model = fixture.Build<SimpleModel>()
+                .With(m=>m.Nickname, string.Empty)
+                .Create();
 
             // Act
             model.Initialise();

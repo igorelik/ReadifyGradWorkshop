@@ -7,20 +7,30 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WorkshopMVC;
 using WorkshopMVC.Controllers;
 using WorkshopMVC.Models;
+using WorkshopMVC.Business;
+using Moq;
 
 namespace WorkshopMVC.Tests.Controllers
 {
     [TestClass]
     public class HomeControllerTest
     {
+        HomeController _controller;
+        Mock<IModelService> _modelServiceMock;
+        [TestInitialize]
+        public void Initiaslise()
+        {
+            _modelServiceMock = new Mock<IModelService>();
+            _controller = new HomeController(_modelServiceMock.Object);
+        }
+
         [TestMethod]
         public void Index()
         {
             // Arrange
-            HomeController controller = new HomeController();
 
             // Act
-            ViewResult result = controller.Index() as ViewResult;
+            ViewResult result = _controller.Index() as ViewResult;
 
             // Assert
             Assert.IsNotNull(result);
@@ -30,10 +40,9 @@ namespace WorkshopMVC.Tests.Controllers
         public void About()
         {
             // Arrange
-            HomeController controller = new HomeController();
-
+ 
             // Act
-            ViewResult result = controller.About() as ViewResult;
+            ViewResult result = _controller.About() as ViewResult;
 
             // Assert
             Assert.AreEqual("Your application description page.", result.ViewBag.Message);
@@ -43,16 +52,17 @@ namespace WorkshopMVC.Tests.Controllers
         public void Contact()
         {
             // Arrange
-            HomeController controller = new HomeController();
+            _modelServiceMock.Setup(m => m.GetEmptyModel())
+                           .Returns(new SimpleModel());
 
             // Act
-            ViewResult result = controller.Contact() as ViewResult;
+            ViewResult result = _controller.Contact() as ViewResult;
 
             // Assert
-            Assert.IsNotNull(result);
-            Assert.IsNotNull(result.ViewBag.Model);
+            Assert.IsNotNull(result, "Contact() retiurns NULL");
+            Assert.IsNotNull(result.ViewBag.Model, "ViewBag.Model is NULL");
             var model = result.ViewBag.Model as SimpleModel;
-            Assert.AreEqual("My name", model.Name);
+            Assert.IsTrue(string.IsNullOrEmpty(model.Name), "Name doesn't match");
         }
     }
 }

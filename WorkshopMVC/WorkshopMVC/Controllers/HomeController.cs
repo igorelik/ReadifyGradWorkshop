@@ -15,8 +15,13 @@ namespace WorkshopMVC.Controllers
         public HomeController(IModelService modelService)
         {
             _modelService = modelService;
-            Model = _modelService.GetEmptyModel();
         }
+
+        //public HomeController()
+        //{
+        //    _modelService = new ModelService();
+        //    Model = _modelService.GetEmptyModel();
+        //}
 
         public SimpleModel Model { get; set; } // = new SimpleModel { Name = "My name", Nickname = "My nickname" };
         public ActionResult Index()
@@ -33,6 +38,7 @@ namespace WorkshopMVC.Controllers
 
         public ActionResult Contact()
         {
+            Model = _modelService.GetEmptyModel();
             ViewBag.Message = "Your contact page.";
             ViewBag.Model = Model;
 

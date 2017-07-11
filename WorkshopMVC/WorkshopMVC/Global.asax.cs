@@ -8,6 +8,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using WorkshopMVC.Business;
 
 namespace WorkshopMVC
 {
@@ -15,14 +16,13 @@ namespace WorkshopMVC
     {
         protected void Application_Start()
         {
-            AreaRegistration.RegisterAllAreas();
-            GlobalConfiguration.Configure(WebApiConfig.Register);
-            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             var builder = new ContainerBuilder();
-
+            //builder.RegisterType<ModelService>().As<IModelService>();
+            builder.RegisterAssemblyTypes(typeof(IModelService).Assembly)
+                .Where(t => t.Name.EndsWith("Service"))
+                .AsImplementedInterfaces()
+                .InstancePerRequest();
             // Register your MVC controllers. (MvcApplication is the name of
             // the class in Global.asax.)
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
@@ -47,7 +47,18 @@ namespace WorkshopMVC
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
 
+            //builder.Register(c =>new ModelService()).As<IModelService>();
 
+            //builder.RegisterType<ModelService>().As<IModelService>();
+            //builder.RegisterAssemblyTypes(typeof(IModelService).Assembly)
+            //    .Where(t => t.Name.EndsWith("Service"))
+            //    .AsImplementedInterfaces()
+            //    .InstancePerRequest();
+            AreaRegistration.RegisterAllAreas();
+            GlobalConfiguration.Configure(WebApiConfig.Register);
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
     }
