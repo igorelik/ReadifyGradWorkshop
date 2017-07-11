@@ -7,6 +7,7 @@ namespace WebApplication1.Models
 {
     public class SimpleModel
     {
+        public string Fullname => $"{Name} - {Nickname}";
         public string Name { get; set; }
         public string Nickname { get; set; }
 
