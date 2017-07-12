@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using XFWorkshop.ViewModel;
 
 namespace XFWorkshop
 {
@@ -12,6 +13,7 @@ namespace XFWorkshop
         public MainPage()
         {
             InitializeComponent();
+            BindingContext = ViewModelLocator.Main;
         }
 
         private void OnTestClicked(object sender, EventArgs e)
