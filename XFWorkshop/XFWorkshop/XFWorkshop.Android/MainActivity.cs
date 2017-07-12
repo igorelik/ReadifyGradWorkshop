@@ -6,6 +6,9 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using GalaSoft.MvvmLight.Ioc;
+using XFWorkshop.Services;
+using XFWorkshop.UWP.Services;
 
 namespace XFWorkshop.Droid
 {
@@ -20,6 +23,9 @@ namespace XFWorkshop.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            SimpleIoc.Default.Register<IPlatformName, DroidPlatformName>();
+
+
             LoadApplication(new App());
         }
     }

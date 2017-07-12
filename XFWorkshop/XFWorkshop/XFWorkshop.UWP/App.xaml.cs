@@ -14,6 +14,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using GalaSoft.MvvmLight.Ioc;
+using XFWorkshop.Services;
+using XFWorkshop.UWP.Services;
 
 namespace XFWorkshop.UWP
 {
@@ -59,6 +62,7 @@ namespace XFWorkshop.UWP
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
                 Xamarin.Forms.Forms.Init(e);
+                SimpleIoc.Default.Register<IPlatformName, WinPlatformName>();
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {

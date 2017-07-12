@@ -1,6 +1,7 @@
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using XFWorkshop.Services;
 
 namespace XFWorkshop.ViewModel
 {
@@ -18,12 +19,14 @@ namespace XFWorkshop.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
+        private IPlatformName _platformName;
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
-        public MainViewModel()
+        public MainViewModel(IPlatformName platformName)
         {
-            MainTitle = "I am from ViewModel";
+            _platformName = platformName;
+            MainTitle = _platformName.PlatformSpecificName;
             TestCommand = new RelayCommand(()=>MainTitle = "I am changed in ViewModel");
         }
 
