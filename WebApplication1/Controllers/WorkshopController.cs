@@ -18,7 +18,7 @@ namespace WebApplication1.Controllers
         // GET api/<controller>/5
         public string Get(int id)
         {
-            return Get().ToList()[id];
+            return Get().ToList()[id];  // Must be serialisable, no circular references.
         }
 
         // POST api/<controller>

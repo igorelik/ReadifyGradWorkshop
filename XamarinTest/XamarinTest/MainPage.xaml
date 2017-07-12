@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XamarinTest"
+             x:Class="XamarinTest.MainPage">
+
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+
+        <ContentView BackgroundColor="AliceBlue">
+            <Label Text="This is a test Xaramin App." HorizontalOptions="Center"/>
+            
+        </ContentView>
+
+
+        <ContentView BackgroundColor="Red" Grid.Row="1">
+            <Label x:Name="ThumbnailsText" Text="{Binding LabelText}"  HorizontalOptions="Center"/>
+            
+        </ContentView>
+
+        <ContentView BackgroundColor="Blue" Grid.Row="2">
+            <Label Text="Full size images TITLE"  HorizontalOptions="Center"/>
+        </ContentView>
+
+        <ContentView BackgroundColor="Green" Grid.Row="3">
+            <Button x:Name="MainButton" Text="Test"  BackgroundColor="Red"  HorizontalOptions="Center"
+            Clicked="MainButton_Clicked"/>
+            
+        </ContentView>
+    </Grid>
+
+</ContentPage>

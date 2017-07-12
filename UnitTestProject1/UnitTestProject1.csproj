@@ -51,6 +51,9 @@
     <Reference Include="Moq, Version=4.7.63.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <HintPath>..\packages\Moq.4.7.63\lib\net45\Moq.dll</HintPath>
     </Reference>
+    <Reference Include="Ploeh.AutoFixture, Version=3.50.0.0, Culture=neutral, PublicKeyToken=b24654c590009d4f, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoFixture.3.50.3\lib\net40\Ploeh.AutoFixture.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
