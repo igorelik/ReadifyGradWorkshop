@@ -1,4 +1,6 @@
+using System.Windows.Input;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 
 namespace XFWorkshop.ViewModel
 {
@@ -21,14 +23,21 @@ namespace XFWorkshop.ViewModel
         /// </summary>
         public MainViewModel()
         {
-            ////if (IsInDesignMode)
-            ////{
-            ////    // Code runs in Blend --> create design time data.
-            ////}
-            ////else
-            ////{
-            ////    // Code runs "for real"
-            ////}
+            MainTitle = "I am from ViewModel";
+            TestCommand = new RelayCommand(()=>MainTitle = "I am changed in ViewModel");
         }
+
+        private string _mainTitle;
+        public string MainTitle
+        {
+            get => _mainTitle;
+            set
+            {
+                _mainTitle = value;
+                RaisePropertyChanged();
+            }
+        }
+ 
+        public ICommand TestCommand { get; set; }
     }
 }

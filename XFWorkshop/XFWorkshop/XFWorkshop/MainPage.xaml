@@ -13,14 +13,15 @@
             <Label x:Name="lblTest" 
                    VerticalOptions="Center" 
                    HorizontalOptions="Center"
-                   Text="I am very long label behind the bug button ljkfhbkjdafghjkdfhgdfjhjkfdxhgjkrdfhgjkrdfthgjkfdhgkfdgjh" />
+                   Text="{Binding MainTitle}" />
         </ContentView>
         <ContentView Grid.Row="1" BackgroundColor="Chocolate">
          <Button x:Name="btnTest" Text="Test" 
                 HeightRequest="50" WidthRequest="300" 
                 VerticalOptions="Center" 
                 HorizontalOptions="Center"
-                Clicked="OnTestClicked"/>           
+                Command="{Binding TestCommand}" 
+                />           
         </ContentView>
 
     </Grid>

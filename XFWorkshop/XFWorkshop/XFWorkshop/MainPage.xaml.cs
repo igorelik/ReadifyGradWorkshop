@@ -8,17 +8,12 @@ using XFWorkshop.ViewModel;
 
 namespace XFWorkshop
 {
-    public partial class MainPage : ContentPage
+    public partial class MainPage 
     {
         public MainPage()
         {
             InitializeComponent();
             BindingContext = ViewModelLocator.Main;
-        }
-
-        private void OnTestClicked(object sender, EventArgs e)
-        {
-            lblTest.Text = "Test is tapped";
         }
     }
 }
