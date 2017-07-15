@@ -4,8 +4,10 @@
     <h2><%: Title %>.</h2>
     <h3>Your contact page.</h3>
     <address>
-        One Microsoft Way<br />
-        Redmond, WA 98052-6399<br />
+        Shyam Saraswati
+        Readify Lvl 17<br />
+        Tower 1 Collins Square<br />
+        Docklands, VIC<br />
         <abbr title="Phone">P:</abbr>
         425.555.0100
     </address>
